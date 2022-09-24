@@ -1,0 +1,110 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    
+}
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+
+
+#game{ 
+width: 1200px;
+height: 250px;
+border: 1px solid black;
+background-image: url(forest.jpg);
+background-size: 600px 250px;
+background-repeat: repeat;
+animation: marquee 20s infinite linear;
+position: relative;
+overflow: hidden; 
+}
+
+
+
+
+@keyframes marquee {
+    0% {
+      background-position: 0;
+    }
+  
+    100% {
+      background-position: -1190px;
+    }
+  }
+
+#game #shiba {
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    bottom: 28px;
+    left: 20px;
+}
+#game #shiba img {
+  height: 70px;
+  width: 70px;
+}
+
+.shibaActive{
+animation: animateShiba 0.5s linear ;
+}
+
+@keyframes animateShiba {
+    0%{bottom: 28px}
+    30%{bottom:  160px}
+    70%{bottom: 160px}
+    
+    100%{bottom: 28px}
+}
+
+#game #block {
+  height: 50px;
+  width: 125px;
+  position: absolute;
+  bottom: 20px;
+  right: -20px;
+}
+
+#game #block img {
+  height: 50px;
+  width: 85px;
+}
+
+.blockActive {
+  animation: blockAnimate 1.5s linear infinite;
+}
+@keyframes blockAnimate {
+  0% {
+      right: -125px;
+  }
+
+  100% {
+      right: 100%;
+  }
+}
+
+#score {
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  color: white;
+  
+}
+
+#gameOver {
+  display: none;
+  font-size: 70px;
+  position: absolute;
+  left: calc(50% - 181px);
+  top: calc(50% - 40px);
+  width: 362px;
+  height: 80px;
+  color: #f27fe3;
+}
