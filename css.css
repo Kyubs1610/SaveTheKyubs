@@ -9,6 +9,8 @@ body {
   display: grid;
   place-items: center;
   height: 100vh;
+  font-family: 'Press Start 2P';font-size: 22px;
+  background-color:#F3D9DC;
 }
 
 
