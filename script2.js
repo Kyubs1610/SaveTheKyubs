@@ -17,20 +17,34 @@ let scoreCounter = () => {
     score.innerHTML = `Score <b>${playerScore}</b>`;
 }
 
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-//start Game
-window.addEventListener("keydown", (start) => {
-    //    console.log(start);
-    if (start.code == "ArrowUp") {
-        gameOver.style.display = "none";
-        block.classList.add("blockActive");
+function startGame() {
+    gameOver.style.display = "none";
+    block.classList.add("blockActive");
 
+    // Initialiser le score
+    playerScore = 0;
+    interval = setInterval(scoreCounter, 200);
+}
 
-        //score
-        let playerScore = 0;
-        interval = setInterval(scoreCounter, 200);
+function handleStart() {
+    if (!block.classList.contains("blockActive")) {
+        startGame();
+        jump();
     }
-});
+}
+
+if (isMobile) {
+    window.addEventListener("touchstart", handleStart);
+} else {
+    window.addEventListener("keydown", (start) => {
+        if (start.code === "ArrowUp") {
+            handleStart();
+        }
+    });
+}
+
 
 
 window.addEventListener("keydown", (e) => {
