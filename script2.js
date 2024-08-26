@@ -21,7 +21,7 @@ let scoreCounter = () => {
 //start Game
 window.addEventListener("keydown", (start) => {
     //    console.log(start);
-    if (start.code == "Space") {
+    if (start.code == "ArrowUp") {
         gameOver.style.display = "none";
         block.classList.add("blockActive");
 
@@ -33,20 +33,26 @@ window.addEventListener("keydown", (start) => {
 });
 
 
-//jump Your Character
 window.addEventListener("keydown", (e) => {
-    //    console.log(e);
-
-    if (e.key == "ArrowUp")
-        if (shiba.classList != "shibaActive") {
-            shiba.classList.add("shibaActive");
-
-            //                remove class after 0.5 seconds
-            setTimeout(() => {
-                shiba.classList.remove("shibaActive");
-            }, 500);
-        }
+    if (e.key === "ArrowUp") {
+        jump();
+    }
 });
+
+window.addEventListener("touchstart", () => {
+    jump();
+});
+
+function jump() {
+    if (shiba.classList != "shibaActive") {
+        shiba.classList.add("shibaActive");
+
+        // Supprimer la classe après 0,5 seconde
+        setTimeout(() => {
+            shiba.classList.remove("shibaActive");
+        }, 500);
+    }
+}
 
 //'Game Over' if 'Character' hit The 'Block' 
 let result = setInterval(() => {
